@@ -63,7 +63,7 @@ function SceneCamera({ mouseRef }) {
   const { camera } = useThree();
   const cameraState = useRef({
     x: 3, y: 1.5, z: 5,
-    targetX: 0, targetY: 0.5, targetZ: 0,
+    targetX: 0, targetY: 1.3, targetZ: 0,
   });
 
   useEffect(() => {
@@ -72,7 +72,7 @@ function SceneCamera({ mouseRef }) {
 
     // Initial position: Front-quarter angle of the car
     camera.position.set(3, 1.5, 5);
-    camera.lookAt(0, 0.5, 0);
+    camera.lookAt(0, 1.3, 0);
 
     const cs = cameraState.current;
 
@@ -87,16 +87,16 @@ function SceneCamera({ mouseRef }) {
     });
 
     // Keyframe 0 → 25%: Orbit to the front
-    tl.to(cs, { x: 0, y: 1.0, z: 5.5, targetX: 0, targetY: 0.3, targetZ: 0, ease: 'none' }, 0);
+    tl.to(cs, { x: 0, y: 1.0, z: 5.5, targetX: 0, targetY: 0.8, targetZ: 0, ease: 'none' }, 0);
 
     // Keyframe 25% → 50%: Orbit to the left side, slightly lower
-    tl.to(cs, { x: -5, y: 0.8, z: 2, targetX: 0, targetY: 0.4, targetZ: 0, ease: 'none' }, 0.25);
+    tl.to(cs, { x: -5, y: 0.8, z: 2, targetX: 0, targetY: 0.9, targetZ: 0, ease: 'none' }, 0.25);
 
     // Keyframe 50% → 75%: Pull back and high for a wide shot
-    tl.to(cs, { x: -4, y: 3.5, z: -4, targetX: 0, targetY: 0.2, targetZ: 0, ease: 'none' }, 0.5);
+    tl.to(cs, { x: -4, y: 3.5, z: -4, targetX: 0, targetY: 0.5, targetZ: 0, ease: 'none' }, 0.5);
 
     // Keyframe 75% → 100%: Dramatic rear shot
-    tl.to(cs, { x: 2, y: 1.2, z: -5, targetX: 0, targetY: 0.6, targetZ: 0, ease: 'none' }, 0.75);
+    tl.to(cs, { x: 2, y: 1.2, z: -5, targetX: 0, targetY: 0.8, targetZ: 0, ease: 'none' }, 0.75);
 
     return () => tl.kill();
   }, [camera]);

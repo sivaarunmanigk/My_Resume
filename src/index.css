@@ -159,6 +159,19 @@ body.cursor-active * { cursor: none !important; }
   width: 100%;
 }
 
+/* ── Hero Canvas Container ─────────────────────────────────────────────────── */
+.hero-canvas-container {
+  opacity: 0.25;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-canvas-container {
+    opacity: 0.4;
+    left: 10%;
+  }
+}
+
 /* ── Color utilities ────────────────────────────────────────────────────────── */
 .accent      { color: var(--accent); }
 .text-muted  { color: var(--text-muted); }

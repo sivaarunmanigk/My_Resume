@@ -23,6 +23,56 @@ function ProjectVisual({ project, hovered }) {
   const accent = ACCENTS[project.heroVisual] || '#D9622B';
   const bg = BG_COLORS[project.heroVisual] || '#100A06';
 
+  if (project.image) {
+    return (
+      <div style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', background: bg }}>
+        <img
+          src={project.image}
+          alt={project.title}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            display: 'block',
+            transition: 'transform 700ms var(--ease-expo)',
+            transform: hovered ? 'scale(1.04)' : 'scale(1)',
+          }}
+        />
+        {/* Gradient overlay from bottom to match the card background */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0, left: 0, right: 0,
+            height: '40%',
+            background: `linear-gradient(to top, rgba(7, 6, 5, 0.9), transparent)`,
+            transition: 'opacity 300ms ease',
+            opacity: hovered ? 0.2 : 0.8,
+            pointerEvents: 'none',
+          }}
+        />
+        {/* Award badge */}
+        {project.award && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              background: accent,
+              color: '#fff',
+              fontSize: '0.5rem',
+              letterSpacing: '0.1em',
+              fontWeight: 700,
+              padding: '0.3rem 0.65rem',
+            }}
+          >
+            {project.award}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div
       style={{

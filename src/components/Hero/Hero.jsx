@@ -71,19 +71,8 @@ export default function Hero() {
           position: 'absolute',
           inset: 0,
           zIndex: 'var(--z-scene)',
-          // Right half only on desktop — leaves name space
-          left: '40%',
-          opacity: 0.7,
         }}
-        className="hidden md:block"
-      >
-        <SceneCanvas webglSupported={webglOk} scrollProgress={0} mouseRef={mouseRef} />
-      </div>
-
-      {/* Mobile: subtle background scene full width, very dim */}
-      <div
-        style={{ position: 'absolute', inset: 0, zIndex: 'var(--z-scene)', opacity: 0.25 }}
-        className="block md:hidden"
+        className="hero-canvas-container"
       >
         {webglOk && (
           <SceneCanvas webglSupported={webglOk} scrollProgress={0} mouseRef={mouseRef} />

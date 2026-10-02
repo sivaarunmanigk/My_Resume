@@ -16,6 +16,7 @@ export const projects = [
     status: "Prototype",
     accent: "#D9622B",
     github: "https://github.com/sivaarunmanigk/Car_Cabin_Interior_light_simulation_using_CAN_with_S32K144",
+    image: "/images/projects/door-status.jpg",
 
     technologies: [
       "NXP S32K144",
@@ -75,6 +76,7 @@ export const projects = [
     role: "Embedded Developer",
     status: "Prototype",
     accent: "#2B7AD9",
+    image: "/images/projects/rescue-link.png",
 
     technologies: [
       "ESP32",
@@ -134,6 +136,7 @@ export const projects = [
     status: "Prototype",
     accent: "#D92B2B",
     github: "https://github.com/sivaarunmanigk/Rescue_Zero_V1",
+    image: "/images/projects/rescue-zero.png",
 
     technologies: [
       "ESP32",
@@ -190,6 +193,7 @@ export const projects = [
     status: "Hackathon Prototype",
     accent: "#2BD9A0",
     award: "1ST PLACE — HACKINFINITY 25",
+    image: "/images/projects/halo.png",
 
     technologies: [
       "ESP32",
@@ -241,6 +245,7 @@ export const projects = [
     role: "Embedded Developer",
     status: "Prototype",
     accent: "#6DB52B",
+    image: "/images/projects/agriculture.png",
 
     technologies: [
       "ESP32",

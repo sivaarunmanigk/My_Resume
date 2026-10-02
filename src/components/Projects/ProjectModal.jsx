@@ -125,6 +125,17 @@ export default function ProjectModal({ project, onClose }) {
             </div>
           </div>
 
+          {/* Project Image */}
+          {project.image && (
+            <div style={{ marginBottom: '2.25rem', border: '1px solid var(--border)', overflow: 'hidden' }}>
+              <img
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                style={{ width: '100%', display: 'block' }}
+              />
+            </div>
+          )}
+
           {/* Overview */}
           <Section title="Overview">
             <p className="t-body" style={{ fontSize: '0.88rem' }}>{project.description}</p>
