@@ -1,0 +1,345 @@
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* SIVAARUNMANI G K — PERSONAL PORTFOLIO                                       */
+/* Editorial, cinematic, premium. Automotive embedded is the specialization.   */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+/* ── Design Tokens ──────────────────────────────────────────────────────────── */
+:root {
+  --bg:            #0A0806;
+  --bg-dark:       #070706;
+  --bg-card:       #0F0E0C;
+  --bg-subtle:     #131210;
+  --accent:        #D9622B;
+  --accent-glow:   rgba(217, 98, 43, 0.12);
+  --text:          #F2ECE4;
+  --text-muted:    #8A837A;
+  --text-faint:    #3A3530;
+  --border:        rgba(242, 236, 228, 0.07);
+  --border-soft:   rgba(242, 236, 228, 0.04);
+
+  --font-main: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
+
+  --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --z-scene:   10;
+  --z-content: 20;
+  --z-nav:     40;
+  --z-loader:  50;
+  --z-cursor:  90;
+  --z-modal:   70;
+}
+
+@theme {
+  --color-bg:       #0A0806;
+  --color-accent:   #D9622B;
+  --color-text:     #F2ECE4;
+  --color-muted:    #8A837A;
+  --font-family-sans: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg-dark);
+  color: var(--text);
+  font-family: var(--font-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+body.cursor-active,
+body.cursor-active * { cursor: none !important; }
+
+::selection { background: var(--accent); color: #fff; }
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: rgba(217,98,43,0.4); }
+
+/* ── Typography ─────────────────────────────────────────────────────────────── */
+
+/* Name / Hero title — the biggest typography on the page */
+.t-name {
+  font-size: clamp(5rem, 14vw, 16rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 0.84;
+}
+
+/* Section headline */
+.t-display {
+  font-size: clamp(3.5rem, 9vw, 10rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+}
+
+/* Sub-headline */
+.t-heading {
+  font-size: clamp(2rem, 5vw, 5.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+}
+
+/* Body */
+.t-body {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.72;
+  color: var(--text-muted);
+}
+
+/* Label — uppercase small */
+.t-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.t-label-accent {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+.section {
+  padding: 9rem 2.5rem;
+}
+
+.section-sm {
+  padding: 5rem 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 5rem 1.25rem; }
+  .section-sm { padding: 3rem 1.25rem; }
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-mid {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.container-narrow {
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── Color utilities ────────────────────────────────────────────────────────── */
+.accent      { color: var(--accent); }
+.text-muted  { color: var(--text-muted); }
+.text-faint  { color: var(--text-faint); }
+
+/* ── Divider line with label ────────────────────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Project card ───────────────────────────────────────────────────────────── */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-card);
+}
+
+.project-card .card-image {
+  width: 100%;
+  height: 100%;
+  transition: transform 700ms var(--ease-expo);
+}
+.project-card:hover .card-image {
+  transform: scale(1.04);
+}
+
+.project-card .card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7,6,5,0.92) 0%, rgba(7,6,5,0.2) 60%, transparent 100%);
+  transition: opacity 400ms ease;
+}
+
+/* ── Tag chip ───────────────────────────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  background: transparent;
+}
+
+/* ── Progress bar ───────────────────────────────────────────────────────────── */
+.progress-track {
+  height: 1px;
+  background: var(--border);
+  position: relative;
+}
+.progress-fill {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  transition: width 0.1s linear;
+}
+
+/* ── Marquee ────────────────────────────────────────────────────────────────── */
+@keyframes marquee-left  { from { transform: translateX(0);    } to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0);    } }
+
+.marquee-left  { animation: marquee-left  30s linear infinite; }
+.marquee-right { animation: marquee-right 36s linear infinite; }
+
+.marquee-left:hover,
+.marquee-right:hover { animation-play-state: paused; }
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(2rem); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0);     }
+  50%       { transform: translateY(-8px);  }
+}
+@keyframes pulse-accent {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes scan-line {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(100vh); }
+}
+
+.animate-float       { animation: float 5s ease-in-out infinite; }
+.animate-pulse-accent{ animation: pulse-accent 2s ease infinite; }
+.animate-fade-up     { animation: fade-up 0.9s var(--ease-expo) forwards; }
+.animate-spin-slow   { animation: spin-slow 20s linear infinite; }
+
+/* ── Modal backdrop ─────────────────────────────────────────────────────────── */
+.modal-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(7,6,5,0.95);
+  backdrop-filter: blur(6px);
+  z-index: var(--z-modal);
+}
+
+/* ── Noise overlay ──────────────────────────────────────────────────────────── */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ── Skill grid items ───────────────────────────────────────────────────────── */
+.skill-item {
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  transition: all 220ms var(--ease-expo);
+  cursor: default;
+}
+.skill-item:hover {
+  border-color: rgba(217,98,43,0.35);
+  color: var(--text);
+  background: rgba(217,98,43,0.05);
+}
+.skill-item.primary {
+  color: var(--text);
+  border-color: rgba(242,236,228,0.12);
+}
+.skill-item.primary:hover {
+  border-color: var(--accent);
+  background: rgba(217,98,43,0.08);
+}
+
+/* ── Specialization card ────────────────────────────────────────────────────── */
+.spec-card {
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: border-color 300ms ease, background 300ms ease;
+}
+.spec-card:hover {
+  border-color: rgba(217,98,43,0.25);
+  background: rgba(217,98,43,0.03);
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-left, .marquee-right { animation: none; }
+}
+
+/* ── Mobile ─────────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .t-name    { font-size: clamp(3.5rem, 18vw, 6rem); }
+  .t-display { font-size: clamp(2.5rem, 14vw, 5rem); }
+  .t-heading { font-size: clamp(1.8rem, 10vw, 3.5rem); }
+}
