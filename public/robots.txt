@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sivaarunmani.vercel.app/sitemap.xml
